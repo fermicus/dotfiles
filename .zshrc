@@ -14,6 +14,20 @@ source $ZSH/oh-my-zsh.sh
 alias v="nvim"
 alias machine="~/.local/bin/machine_report.sh"
 
+stow() {
+    if [[ "$PWD" != "$HOME/dotfiles" ]]; then
+        echo "[WARNING!] stow is only allowed from ~/dotfiles"
+        return 1
+    fi
+
+    if [[ "$#" -ne 1 || "$1" != "." ]]; then
+        echo "[WARNING!] Only 'stow .' is allowed"
+        return 1
+    fi
+
+    command stow .
+}
+
 # Node version manager + NodeJs
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

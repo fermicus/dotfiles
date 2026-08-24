@@ -19,6 +19,10 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"pyright",
 		"bashls",
+		"html",
+		"cssls",
+		"ts_ls",
+		"rust_analyzer",
 	},
 })
 
@@ -30,6 +34,10 @@ vim.lsp.enable({
 	"clangd",
 	"pyright",
 	"bashls",
+	"html",
+	"cssls",
+	"ts_ls",
+	"rust_analyzer",
 })
 
 -- Treesitter
@@ -40,9 +48,13 @@ treesitter.setup({})
 treesitter.install({
 	"c",
 	"cpp",
+	"rust",
 	"lua",
 	"python",
 	"bash",
+	"html",
+	"css",
+	"javascript",
 })
 
 -- Formatting
@@ -52,10 +64,16 @@ conform.setup({
 	formatters_by_ft = {
 		c = { "clang_format" },
 		cpp = { "clang_format" },
+		rust = { "rustfmt" },
+
 		python = { "black" },
 		sh = { "shfmt" },
 		bash = { "shfmt" },
 		lua = { "stylua" },
+
+		html = { "prettierd" },
+		css = { "prettierd" },
+		javascript = { "prettierd" },
 	},
 
 	format_on_save = {

@@ -15,6 +15,7 @@ require("lazy").setup({
 	-- Themes
 	{ "kungfusheep/mfd.nvim", lazy = false },
 	{ "srcery-colors/srcery-vim" },
+	{ "rebelot/kanagawa.nvim" },
 
 	-- Features
 	{ "nvim-telescope/telescope.nvim", version = "*", dependencies = { "nvim-lua/plenary.nvim" } },

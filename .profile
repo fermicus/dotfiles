@@ -1,4 +1,3 @@
-source "$HOME/.cargo/env"
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -7,3 +6,4 @@ export VISUAL="nvim"
 
 export PAGER="less"
 export MANPAGES="less -R"
+. "$HOME/.cargo/env"
