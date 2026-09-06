@@ -1,6 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="eastwood"
 
+# ---- [ plugins ] ----------
+
 plugins=(
     git
     zsh-autosuggestions
@@ -11,31 +13,24 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+#---- [ aliases ] ----------
+
 alias v="nvim"
-alias machine="~/.local/bin/machine_report.sh"
+alias pyserve="python3 -m http.server 8111"
+alias venv-make="python3 -m venv env"
+alias venv-activate="source ./env/bin/activate"
+alias venv-delete="rm -rf ./env"
+alias pipr="pip freeze > requirements.txt"
 
-stow() {
-    if [[ "$PWD" != "$HOME/dotfiles" ]]; then
-        echo "[WARNING!] stow is only allowed from ~/dotfiles"
-        return 1
-    fi
-
-    if [[ "$#" -ne 1 || "$1" != "." ]]; then
-        echo "[WARNING!] Only 'stow .' is allowed"
-        return 1
-    fi
-
-    command stow .
-}
-
-# Node version manager + NodeJs
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.local/bin:$PATH"
 
 # bun completions
-[ -s "/home/rbx86/.bun/_bun" ] && source "/home/rbx86/.bun/_bun"
+[ -s "/home/ebx32/.bun/_bun" ] && source "/home/ebx32/.bun/_bun"
+
+# bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export PATH="$HOME/.local/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

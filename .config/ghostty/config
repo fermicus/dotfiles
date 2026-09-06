@@ -1,0 +1,6 @@
+theme = "jellybeans"
+
+# tab management
+keybind=ctrl+T=new_tab
+# keybind=ctrl+W=close_tab:this
+keybind=alt+f=toggle_maximize

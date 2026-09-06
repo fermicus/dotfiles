@@ -1,14 +1,19 @@
 -- Setup plugins
-require("mfd").setup({})
-require("kanagawa").setup({})
+-- require("kanagawa").setup({})
+-- vim.cmd.colorscheme("kanagawa-dragon")
+-- vim.opt.termguicolors = true
+--
+-- vim.g.ayucolor = "dark" -- "light", "mirage", or "dark"
+--
+-- vim.cmd.colorscheme("ayu")
+--
+--
+require('lualine').setup({
+  options = {
+    theme = 'ayu',
+  },
+})
 
-vim.keymap.set("n", "<leader>cs", function()
-	if vim.g.colors_name == "mfd-hud" then
-		vim.cmd.colorscheme("kanagawa-dragon")
-	else
-		vim.cmd.colorscheme("mfd-hud")
-	end
-end)
+require("ayu").setup({})
 
--- vim.cmd.colorscheme("mfd-hud")
-vim.cmd.colorscheme("kanagawa-dragon")
+vim.cmd.colorscheme("ayu")
