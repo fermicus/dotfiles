@@ -1,13 +1,15 @@
 # output location
--o ~/Videos/%(title)s.%(ext)s
+# -o ~/Videos/%(title)s.%(ext)s
 
 # best quality
--f "bv*+ba/b"
+# -f "bv*+ba/b"
 
---merge-output-format mp4
+# --merge-output-format mp4
 --embed-metadata
 --embed-thumbnail
 --no-overwrites
 # Filenames
 --restrict-filenames
 --js-runtimes deno:~/.local/bin/deno
+
+# NOTE: Check ~/.zshrc for runtime configs

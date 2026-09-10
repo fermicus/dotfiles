@@ -23,6 +23,7 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"ts_ls",
 		"rust_analyzer",
+        "asm_lsp",
 	},
 })
 
@@ -38,6 +39,7 @@ vim.lsp.enable({
 	"cssls",
 	"ts_ls",
 	"rust_analyzer",
+    "asm_lsp",
 })
 
 -- Treesitter
@@ -74,6 +76,7 @@ conform.setup({
 		html = { "prettierd" },
 		css = { "prettierd" },
 		javascript = { "prettierd" },
+        asm = { "asmfmt" },
 	},
 
 	format_on_save = {
