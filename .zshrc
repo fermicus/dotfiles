@@ -6,8 +6,6 @@ ZSH_THEME="eastwood"
 plugins=(
     git
     zsh-autosuggestions
-    you-should-use
-    sudo
     zsh-syntax-highlighting
 )
 
@@ -17,10 +15,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias v="nvim"
 alias pyserve="python3 -m http.server 8111"
-alias venv-make="python3 -m venv env"
-alias venv-activate="source ./env/bin/activate"
-alias venv-delete="rm -rf ./env"
-alias pipr="pip freeze > requirements.txt"
+alias dotfiles="cd ~/dotfiles/"
+alias dotfiles-nvim="cd ~/dotfiles/.config/nvim && nvim"
 
 #---- [yt-dlp] ----------
 

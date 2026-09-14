@@ -13,12 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	-- Themes
-    -- { "ayu-theme/ayu-vim" },
     { "shatur/neovim-ayu" },
+    { "kungfusheep/mfd.nvim", lazy = false, priority = 1000 },
 
 	-- Features
 	{ "nvim-telescope/telescope.nvim", version = "*", dependencies = { "nvim-lua/plenary.nvim" } },
-	{ "nvim-tree/nvim-tree.lua", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "nvim-tree/nvim-tree.lua", priority = 1000, version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "terrortylor/nvim-comment" },
 	{ "akinsho/toggleterm.nvim", version = "*" },
