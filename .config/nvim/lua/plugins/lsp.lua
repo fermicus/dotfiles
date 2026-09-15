@@ -1,10 +1,9 @@
--- Completion
-local blink = require("blink.cmp")
+-- C, Rust, Python, Bash
 
-blink.setup({
+-- Completion (blink)
+require("blink.cmp").setup({
 	keymap = {
 		preset = "default",
-
 		["<Up>"] = { "select_prev", "fallback" },
 		["<Down>"] = { "select_next", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
@@ -12,82 +11,33 @@ blink.setup({
 })
 
 -- LSP
-require("mason").setup({})
-
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"clangd",
-		"pyright",
-		"bashls",
-		"html",
-		"cssls",
-		"ts_ls",
-		"rust_analyzer",
-        "asm_lsp",
-	},
-})
-
-vim.lsp.config("*", {
-	capabilities = blink.get_lsp_capabilities(),
-})
+vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
 
 vim.lsp.enable({
 	"clangd",
-	"pyright",
-	"bashls",
-	"html",
-	"cssls",
-	"ts_ls",
 	"rust_analyzer",
-    "asm_lsp",
+	"pylsp",
+	"bashls",
 })
 
--- Treesitter
-local treesitter = require("nvim-treesitter")
-
-treesitter.setup({})
-
-treesitter.install({
-	"c",
-	"cpp",
-	"rust",
-	"lua",
-	"python",
-	"bash",
-	"html",
-	"css",
-	"javascript",
-})
-
--- Formatting
-local conform = require("conform")
-
-conform.setup({
+-- Formatter (conform)
+require("conform").setup({
 	formatters_by_ft = {
 		c = { "clang_format" },
-		cpp = { "clang_format" },
 		rust = { "rustfmt" },
-
-		python = { "black" },
+		python = { "ruff_format" },
 		sh = { "shfmt" },
-		bash = { "shfmt" },
-		lua = { "stylua" },
-
-		html = { "prettierd" },
-		css = { "prettierd" },
-		javascript = { "prettierd" },
-        asm = { "asmfmt" },
 	},
-
 	format_on_save = {
 		timeout_ms = 100,
 		lsp_fallback = true,
 	},
 })
 
-vim.keymap.set("n", "<leader>f", function()
-	conform.format({
-		async = true,
-		lsp_fallback = true,
-	})
-end)
+-- Treesitter (nvim-treesitter)
+-- use :TSInstall c rust python bash
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+	end,
+})

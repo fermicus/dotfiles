@@ -1,26 +1,11 @@
-require("bufferline").setup({}) -- bufferline
 require("nvim-autopairs").setup({}) -- autopairs
 require("gitsigns").setup({}) -- gitsigns
-require("nvim-tree").setup({})
 require("nvim_comment").setup({ create_mappings = false }) --comment
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "dashboard",
-	callback = function()
-		vim.keymap.set("n", "q", "<cmd>qa<cr>", {
-			buffer = true,
-			silent = true,
-		})
-	end,
-})
 
 -- terminal
 require("toggleterm").setup({
 	size = 20,
 	direction = "horizontal",
-	float_opts = {
-		border = "curved",
-	},
 })
 
 -- lua line
@@ -36,7 +21,4 @@ require("lualine").setup({
 	},
 })
 
--- session
-require("persistence").setup({
-	dir = vim.fn.stdpath("state") .. "/sessions/",
-})
+

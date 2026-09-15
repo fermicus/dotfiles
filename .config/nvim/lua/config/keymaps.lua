@@ -1,11 +1,6 @@
 -- <leader> = space
 vim.g.mapleader = " "
 
--- buffers
-vim.keymap.set("n", "<leader>n", ":bn<CR>") -- next
-vim.keymap.set("n", "<leader>p", ":bp<CR>") -- previous
-vim.keymap.set("n", "<leader>x", ":bd<CR>") -- delete
-
 -- window navigation
 vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>") -- vertical split
 vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>") -- horizontal split
@@ -24,19 +19,21 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
--- Diagnostics
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
-
 ---------- plugin specific keymaps ----------
 
--- telescope
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
+-- mini.files
+vim.keymap.set("n", "<leader>e", function()
+	require("mini.files").open(vim.api.nvim_buf_get_name(0))
+end)
 
--- file tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
+require("mini.files").setup({
+	mappings = {
+		go_in = "<Right>",
+		go_in_plus = "<CR>",
+		go_out = "<Left>",
+		go_out_plus = "<BS>",
+	},
+})
 
 -- comment toggle
 vim.keymap.set({ "n", "v" }, "<Leader>/", ":CommentToggle<CR>")
@@ -45,9 +42,3 @@ vim.keymap.set({ "n", "v" }, "<Leader>/", ":CommentToggle<CR>")
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>")
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
--- formatting
-vim.keymap.set("n", "<leader>f", function()
-	require("conform").format({
-		lsp_fallback = true, -- fallback to lsp formatter
-	})
-end)

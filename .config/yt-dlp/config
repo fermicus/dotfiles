@@ -10,6 +10,6 @@
 --no-overwrites
 # Filenames
 --restrict-filenames
---js-runtimes deno:~/.local/bin/deno
+--js-runtimes deno:./deno/
 
 # NOTE: Check ~/.zshrc for runtime configs

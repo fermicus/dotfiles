@@ -5,35 +5,29 @@ if not vim.uv.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Themes
-    { "shatur/neovim-ayu" },
-    { "kungfusheep/mfd.nvim", lazy = false, priority = 1000 },
 
-	-- Features
-	{ "nvim-telescope/telescope.nvim", version = "*", dependencies = { "nvim-lua/plenary.nvim" } },
-	{ "nvim-tree/nvim-tree.lua", priority = 1000, version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
-	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-	{ "terrortylor/nvim-comment" },
+    { 'nvim-mini/mini.files', version = '*' },
 	{ "akinsho/toggleterm.nvim", version = "*" },
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+
+	-- Themes
+	{ "thesimonho/kanagawa-paper.nvim", lazy = false, priority = 1000, opts = {} },
+
+	-- QOL
+	{ "terrortylor/nvim-comment" },
 	{ "lewis6991/gitsigns.nvim" },
+	{ "windwp/nvim-autopairs", event = "InsertEnter" },
 
-	-- Session
-	{ "folke/persistence.nvim", event = "BufReadPre" },
-
-	-- LSP & Fromatting
+	-- LSP
 	{ "neovim/nvim-lspconfig" },
-	{ "mason-org/mason.nvim" },
-	{ "mason-org/mason-lspconfig.nvim" },
 	{ "saghen/blink.cmp", version = "1.*", dependencies = "rafamadriz/friendly-snippets" },
 	{ "stevearc/conform.nvim" },
-	{ "windwp/nvim-autopairs", event = "InsertEnter" },
 	{ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
 })

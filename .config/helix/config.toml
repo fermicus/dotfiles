@@ -1,0 +1,16 @@
+theme = "ayu_dark"
+
+[keys.normal]
+C-left = "move_prev_word_start"
+C-right = "move_next_word_start"
+
+[keys.insert]
+C-left = "move_prev_word_start"
+C-right = "move_next_word_start"
+
+[keys.select]
+C-left = "extend_prev_word_start"
+C-right = "extend_next_word_start"   
+
+[editor]
+line-number = "relative"

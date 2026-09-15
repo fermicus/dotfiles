@@ -1,0 +1,19 @@
+[[language]]
+name = "c"
+formatter = { command = "clang-format" }
+auto-format = true
+
+[[language]]
+name = "python"
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
+
+[[language]]
+name = "bash"
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = 'shfmt', args = ["-i", "4"] }
+auto-format = true
+
+[[language]]
+name = "rust"
+auto-format = true

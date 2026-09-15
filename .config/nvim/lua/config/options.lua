@@ -21,26 +21,3 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8 -- minimum number of lines to keep above and below the cursor
 vim.opt.sidescrolloff = 8 -- minimum number of columns to keep above and below the cursor
 
--- Diagnostics
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = ">>",
-			[vim.diagnostic.severity.WARN] = "⚠",
-		},
-	},
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
-})
-
-vim.opt.updatetime = 100
-vim.api.nvim_create_autocmd("CursorHold", {
-	callback = function()
-		vim.diagnostic.open_float(nil, {
-			focus = false,
-			scope = "cursor",
-		})
-	end,
-})
