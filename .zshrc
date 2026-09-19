@@ -17,6 +17,7 @@ alias v="nvim"
 alias hx="helix"
 alias pyserve="python3 -m http.server 8111"
 alias pls-off="systemctl poweroff"
+alias dots-conf="cd ~/.dotfiles/.config/"
 
 #---- [yt-dlp] ----------
 
@@ -31,3 +32,7 @@ yt-audio() {
 }
 
 export PATH="$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

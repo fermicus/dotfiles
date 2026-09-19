@@ -42,16 +42,33 @@ require("mini.files").setup({
 	},
 })
 
+-- vim.keymap.set("n", "l", function()
+--     MiniFiles.go_in()
+-- end)
+--
+-- vim.keymap.set("n", "h", function()
+--     MiniFiles.go_out()
+-- end)
+--
 -- comment toggle
 vim.keymap.set({ "n", "v" }, "<Leader>/", ":CommentToggle<CR>")
 
 -- terminal
-vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>")
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
-
--- telescope
-local telescope = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', telescope.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = 'Telescope help tags' })
+-- local term = require("floatty").setup({})
+local term = require("floatty").setup({
+	window = {
+		row = function()
+			return vim.o.lines - 11
+		end,
+		width = 1.0,
+		height = 8,
+	},
+})
+-- vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>")
+-- vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+vim.keymap.set("n", "<leader>t", function()
+	term.toggle()
+end)
+vim.keymap.set("t", "<leader>t", function()
+	term.toggle()
+end)

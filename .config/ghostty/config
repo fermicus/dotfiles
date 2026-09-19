@@ -4,3 +4,6 @@ theme = "jellybeans"
 keybind=ctrl+T=new_tab
 # keybind=ctrl+W=close_tab:this
 keybind=alt+f=toggle_maximize
+
+window-width = 110
+window-height = 30
